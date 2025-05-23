@@ -3,12 +3,16 @@ services:
     name: django-blog-test-app
     env: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn django-blog-test.wsgi:application"
+    startCommand: "gunicorn webmagblog.wsgi:application"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: django-blog-test.settings
+        value: webmagblog.settings
       - key: SECRET_KEY
-        value: v$u4l(4#8z5j%!%hnjc#esmcx*9p_a!@4wev7!p-q77qk*8e0n
+        value: v$u4l(4#8z5j%!%hnjc#esmcx9p_a!@4wev7!p-q77qk8e0n
+      - key: DEBUG
+        value: False
+      - key: ALLOWED_HOSTS
+        value: django-blog-test-oja6.onrender.com
       - key: DATABASE_URL
         fromDatabase:
           name: render-django-db
