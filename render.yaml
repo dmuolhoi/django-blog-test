@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: django-blog-test-app
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn django-blog-test.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: django-blog-test.settings
+      - key: SECRET_KEY
+        value: v$u4l(4#8z5j%!%hnjc#esmcx*9p_a!@4wev7!p-q77qk*8e0n
+      - key: DATABASE_URL
+        fromDatabase:
+          name: render-django-db
+          property: connectionString
+
+databases:
+  - name: render-django-db
+    databaseName: django
+    user: django
